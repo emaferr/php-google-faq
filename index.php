@@ -55,30 +55,34 @@ $db = [
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="./assets/css/style.css">
     </head>
 
     <body>
 
         <header>
-            <nav class="navbar navbar-light bg-light">
+            <nav class="navbar fixed-top navbar-light bg-light pb-0 shadow-sm">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
-                    <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
-                    Bootstrap
+                    <a style="padding-left: .75rem;" class="navbar-brand d-flex align-items-end" href="#">
+                    <img src="./assets/img/googlelogo_clr_74x24px.svg" alt="" class="d-inline-block align-text-top pe-2">
+                    Privacy & Termini
                     </a>
                 </div>
                 <ul class="nav">
                     <?php
                         foreach ($header_links as $link) {
-                            echo "<li class='nav-item'><a class='nav-link'>{$link}</a></li>";
+                            if($link == 'Domande frequenti'){
+                                echo "<li class='nav-item px-4'><a class='nav-link px-0 active'>{$link}</a></li>";
+                            }else {
+                                echo "<li class='nav-item px-4'><a class='nav-link px-0'>{$link}</a></li>";
+                            }
                         }
                     ?>
                 </ul>
             </nav>
         </header>
 
-        <main class="py-5">
+        <main>
 
             <div class="container">
             <?php
@@ -94,7 +98,7 @@ $db = [
 
         </main>
 
-        <footer class="bg-light"></footer>
+        <footer class="bg-light shadow-sm"></footer>
 
     </body>
 
