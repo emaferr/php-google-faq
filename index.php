@@ -36,7 +36,9 @@ $db = [
         
         'answer' => "In alcuni casi sì. Quando fai clic su un risultato della Ricerca Google, il tuo browser web potrebbe reindirizzare alla pagina web di destinazione anche l'indirizzo Internet, o URL, della pagina dei risultati di ricerca sotto forma di URL referrer. Talvolta, l'URL della pagina dei risultati di ricerca potrebbe contenere la query di ricerca che hai inserito. Se utilizzi la ricerca SSL (la funzione di ricerca criptata di Google), nella maggior parte dei casi i termini di ricerca non vengono inviati come parte dell'URL negli URL referrer. Questo comportamento può fare eccezione, ad esempio se utilizzi alcuni browser meno diffusi. Ulteriori informazioni sulla ricerca SSL sono disponibili qui. Le query di ricerca o le informazioni contenute nell'URL referrer potrebbero essere disponibili mediante Google Analytics o un'API (Application Programming Interface). Inoltre, gli inserzionisti potrebbero ricevere informazioni relative all' esatte parole chiave che hanno determinato il clic su un annuncio."
     ] 
-]
+    ];
+
+    $header_links = ['Introduzione','Norme sulla privacy','Termini di servizio','Tecnologie','Domande frequenti'];
 
 ?>
 
@@ -44,43 +46,56 @@ $db = [
 
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domande frequenti - Privacy e termini - Google</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Domande frequenti - Privacy e termini - Google</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+    </head>
 
-<body>
+    <body>
 
-<header>
+        <header>
+            <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                    <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                    Bootstrap
+                    </a>
+                </div>
+                <ul class="nav">
+                    <?php
+                        foreach ($header_links as $link) {
+                            echo "<li class='nav-item'><a class='nav-link'>{$link}</a></li>";
+                        }
+                    ?>
+                </ul>
+            </nav>
+        </header>
 
+        <main class="py-5">
 
-</header>
+            <div class="container">
+            <?php
+                foreach ($db as $key) {
+                    echo "<h3 class='pt-4 pb-2'>{$key['question']}</h3>";
+                    $txt=explode(";",$key['answer']);
+                    foreach ($txt as $p) {
+                        echo "<p>{$p}</p>";
+                    }
+                }
+            ?>
+            </div>
 
-<main class="py-5">
+        </main>
 
-<div class="container">
-<?php
-       foreach ($db as $key) {
-           echo "<h3 class='pt-4 pb-2'>{$key['question']}</h3>";
-           $txt=explode(";",$key['answer']);
-           foreach ($txt as $p) {
-               echo "<p>{$p}</p>";
-           }
-       }
-?>
-</div>
+        <footer class="bg-light"></footer>
 
-</main>
-
-<footer></footer>
-
-</body>
+    </body>
 
 </html>
